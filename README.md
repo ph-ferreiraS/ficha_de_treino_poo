@@ -1,43 +1,107 @@
-# Projeto Java
+# 🏋️ Sistema de Gerenciamento para Personal Trainers
 
-## 🎯 Objetivo
-
-Este projeto foi desenvolvido em **Java**, focando nos princípios básicos da **Programação Orientada a Objetos (POO)** e na criação de uma aplicação prática empacotada em um arquivo `.jar` executável.
-
-O objetivo é demonstrar a construção de classes, objetos, métodos e outros conceitos essenciais da POO em um projeto funcional.
+Sistema Java para gerenciar avaliações físicas, cadastro de alunos e geração de treinos personalizados. Desenvolvido para otimizar o trabalho de profissionais de educação física.
 
 ---
 
-## 🔍 Tecnologias Utilizadas
-
-- **Java SE** (Standard Edition)
-- **Programação Orientada a Objetos (POO)**
-- **Empacotamento de aplicações (.jar)**
-
-> **Observação:** Se foi usado Swing ou JavaFX para a interface, você pode acrescentar aqui também.
+## 🚀 **Funcionalidades**
+- **Cadastro de Alunos**: 
+  - Tipos específicos: `Aluno Regular`, `Atleta` e `Aluno Idoso`.
+  - Atributos personalizados por categoria (ex: pressão arterial para idosos, offseason para atletas).
+- **Avaliações Físicas**:
+  - Registro de peso, medidas corporais e percentual de gordura.
+  - Histórico de avaliações por aluno.
+- **Gestão de Treinos**:
+  - Geração automática de treinos baseados no IMC.
+  - Personalização de exercícios e duração média.
+- **Login e Registro de Personal Trainers**:
+  - Autenticação segura com email e senha.
+- **Operações CRUD**:
+  - Adicionar, remover, editar e favoritar alunos.
+  - Edição em cascata para subclasses (ex: ajustar gramas de carboidrato para atletas).
 
 ---
 
-## 🛠️ Aspectos Importantes
-
-- **Encapsulamento**: Proteção de atributos e controle de acesso por métodos `get` e `set`.
-- **Herança**: Criação de classes-filho que herdam de classes-pai.
-- **Polimorfismo**: Métodos sobrescritos para comportamentos específicos.
-- **Abstração**: Separação entre o que a aplicação faz e como ela faz.
+## ⚙️ **Tecnologias Utilizadas**
+- **Java**: Linguagem principal do projeto.
+- **POO**: Herança (`AlunoIdoso` e `Atleta` extendem `Aluno`), encapsulamento e polimorfismo.
+- **Bibliotecas**:
+  - `java.util.ArrayList`: Para listas dinâmicas de alunos e avaliações.
+  - `java.util.UUID`: Geração de IDs únicos para alunos e personais.
+- **Console Interativo**: Menu intuitivo com `Scanner` para entrada de dados.
 
 ---
 
-## 🚀 Como Executar
+## 📂 **Estrutura do Projeto**
+```plaintext
+trabalhopoo_personaltrainer/
+├── Aluno.java              # Classe base para todos os alunos
+├── AlunoIdoso.java         # Subclasse com atributos de saúde para idosos
+├── Atleta.java             # Subclasse com métricas específicas para atletas
+├── AvaliacaoFisica.java    # Registro de avaliações físicas
+├── Personal.java           # Classe para gerenciar personal trainers
+├── TreinoDoDia.java        # Geração de treinos personalizados
+├── Main.java               # Sistema interativo com menus e lógica principal
+└── produtos.csv            # Base de dados de produtos (não utilizado neste projeto)
 
-1. Certifique-se de ter o **Java JDK** instalado no computador.
-2. Abra o terminal no diretório onde está o `.jar`.
-3. Execute o seguinte comando:
+---
 
-```bash
-java -jar nome-do-arquivo.jar
+```
+## 🎯 **Exemplos de Uso**
 
-## 📚 Aprendizados
-1. Estruturação de projetos Java de forma modular.
-2. Organização e aplicação prática dos conceitos de POO.
-3. Empacotamento de aplicações Java para distribuição.
+### 1. Cadastro de Atleta
+```java
+Atleta atleta = new Atleta(
+    "Carlos",         // Nome
+    1.85,             // Altura (metros)
+    "M",              // Sexo
+    true,             // Favorito
+    28,               // Idade
+    75.5,             // Peso (kg)
+    22.1,             // IMC
+    15.0,             // GC (% gordura corporal)
+    2000,             // ME (metabolismo energético)
+    1800,             // MB (metabolismo basal)
+    2.5,              // GV (gasto calórico)
+    new String[]{"Segunda", "Quarta"}, // Dias disponíveis
+    "Treino Pesado",  // Tipo de treino
+    true,             // Offseason (fora de temporada)
+    false,            // Precontest (pré-competição)
+    300,              // Gramas de carboidrato/dia
+    4                 // Litros de água/dia
+);
+```
+### 2. Geração de Treino Baseado no IMC
+```java
+if (imc < 18.5) {
+    treinoDoDia.adicionarTipo("Ganho de Massa");
+    treinoDoDia.adicionarExercicio("Supino");
+    treinoDoDia.adicionarExercicio("Agachamento");
+    treinoDoDia.setDuracaoMedia(90); // 90 minutos
+    System.out.println("Treino para ganho de massa gerado!");
+}
+```
 
+---
+
+### 🔍 **Explicação**:
+- **Cadastro de Atleta**: Demonstra a criação de um objeto `Atleta` com parâmetros específicos:
+  - `new String[]{"Segunda", "Quarta"}`: Dias de treino como array.
+  - `true/false`: Flags para offseason e pré-competição.
+  
+- **Geração de Treino**: Lógica condicional que:
+  - Adiciona exercícios baseados no IMC.
+  - Define duração do treino automaticamente.
+```
+
+👥 Contribuidores
+
+    Gabriel Ribeiro Filice Chayb
+
+    Ítalo Nunes Tillmann de Abreu
+
+    Leandro Elias Fontes Carrijo
+
+    Leandro Silva Pina de Campos
+
+    Pedro Henrique Ferreira Simões
